@@ -3,9 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 const services = [
   {
-    cta: "Sold Out",
     description: "Perfect for small businesses needing a professional online presence",
-    disabled: true,
     features: [
       "Custom design",
       "Mobile-responsive layout",
@@ -14,13 +12,11 @@ const services = [
       "4 week delivery",
     ],
     price: "€6.000",
-    spots: 0,
+    spots: 1,
     title: "Website",
   },
   {
-    cta: "Sold Out",
     description: "For businesses ready to scale with a robust web application",
-    disabled: true,
     features: [
       "Everything in Website",
       "Custom web application",
@@ -34,9 +30,7 @@ const services = [
     title: "Webapp",
   },
   {
-    cta: "Contact Us",
     description: "Enterprise-grade solutions tailored to your specific needs",
-    disabled: false,
     features: [
       "Everything in Webapp",
       "Custom integrations",
@@ -59,9 +53,12 @@ export const ServicesSection = () => {
         <div className="grid gap-6 md:grid-cols-3">
           {services.map((service) => (
             <Card className="relative flex flex-col" key={service.title}>
-              {service.spots === 0 && (
-                <div className="absolute -top-3 right-4 rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
-                  0 spots left
+              {service.spots !== null && (
+                <div className="absolute -top-3 right-4 flex items-center gap-1.5 rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
+                  <span
+                    className={`h-1.5 w-1.5 rounded-full ${service.spots > 0 ? "bg-green-500 shadow-[0_0_4px_1px_rgba(34,197,94,0.5)]" : "bg-red-500 shadow-[0_0_4px_1px_rgba(239,68,68,0.5)]"}`}
+                  />
+                  {service.spots} {service.spots === 1 ? "spot" : "spots"} left
                 </div>
               )}
               <CardHeader>
@@ -85,20 +82,22 @@ export const ServicesSection = () => {
                   ))}
                 </ul>
                 <Button
-                  asChild={!service.disabled}
+                  asChild={service.spots !== 0}
                   className={
-                    service.disabled
+                    service.spots === 0
                       ? "w-full"
-                      : "w-full bg-linear-to-b from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700"
+                      : service.spots === null
+                        ? "w-full"
+                        : "w-full bg-linear-to-b from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700"
                   }
-                  disabled={service.disabled}
-                  variant={service.disabled ? "secondary" : "default"}
+                  disabled={service.spots === 0}
+                  variant={service.spots === 0 ? "secondary" : service.spots === null ? "outline" : "default"}
                 >
-                  {service.disabled ? (
-                    service.cta
+                  {service.spots === 0 ? (
+                    "Sold Out"
                   ) : (
                     <a href="https://app.cal.com/vftiago/lightradius" rel="noopener noreferrer" target="_blank">
-                      {service.cta}
+                      Contact Us
                     </a>
                   )}
                 </Button>
