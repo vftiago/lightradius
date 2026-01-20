@@ -82,6 +82,13 @@ export default tseslint.config(
           type: "alphabetical",
         },
       ],
+      "react/function-component-definition": [
+        "warn",
+        {
+          namedComponents: "arrow-function",
+          unnamedComponents: "arrow-function",
+        },
+      ],
     },
   },
 );
