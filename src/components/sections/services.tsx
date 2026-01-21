@@ -1,3 +1,4 @@
+import { type RefObject } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -44,10 +45,14 @@ const services = [
   },
 ];
 
-export const ServicesSection = () => {
+interface ServicesSectionProps {
+  sectionRef: RefObject<HTMLElement | null>;
+}
+
+export const ServicesSection = ({ sectionRef }: ServicesSectionProps) => {
   return (
-    <section className="px-6 py-24" id="services">
-      <div className="mx-auto max-w-4xl">
+    <section className="px-6 py-24" id="services" ref={sectionRef}>
+      <div className="mx-auto max-w-5xl">
         <h2 className="mb-4 text-center text-3xl font-bold tracking-tight sm:text-4xl">Services</h2>
         <p className="mb-12 text-center text-muted-foreground">Choose the package that fits your needs</p>
         <div className="grid gap-6 md:grid-cols-3">
