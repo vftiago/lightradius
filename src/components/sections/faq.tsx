@@ -18,6 +18,11 @@ const faqs = [
   },
   {
     answer:
+      "We specialize in webapps, not native mobile apps. A webapp runs in your browser and works on any device, while native apps are downloaded from the App Store or Google Play. Webapps are faster to build, easier to maintain, and don't require app store approval.",
+    question: "Do you build apps for the App Store or Google Play?",
+  },
+  {
+    answer:
       "We primarily work with Next.js, React, and TypeScript for building high-performance, SEO-friendly web applications. We use Tailwind CSS for styling.",
     question: "What technologies do you use?",
   },
@@ -25,6 +30,11 @@ const faqs = [
     answer:
       "We offer ongoing support and maintenance packages after project completion. We can discuss your specific needs during our initial consultation.",
     question: "Do you provide ongoing support after launch?",
+  },
+  {
+    answer:
+      "We intentionally limit the number of projects we take on to ensure every client gets our full attention. This allows us to deliver higher quality work and maintain close communication throughout the process.",
+    question: "Why do you have limited spots available?",
   },
 ];
 
@@ -37,7 +47,7 @@ export const FAQSection = () => {
         <Accordion collapsible className="w-full" type="single">
           {faqs.map((faq, index) => (
             <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
+              <AccordionTrigger className="text-left cursor-pointer">{faq.question}</AccordionTrigger>
               <AccordionContent className="text-muted-foreground">{faq.answer}</AccordionContent>
             </AccordionItem>
           ))}
