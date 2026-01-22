@@ -1,30 +1,10 @@
-"use client";
+import { HomeClient } from "@/components/home-client";
+import { getServiceSpots } from "@/lib/edge-config";
 
-import { useRef } from "react";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
-import { FAQSection } from "@/components/sections/faq";
-import { HeroSection } from "@/components/sections/hero";
-import { ServicesSection } from "@/components/sections/services";
+const Home = async () => {
+  const serviceSpots = await getServiceSpots();
 
-const Home = () => {
-  const servicesRef = useRef<HTMLElement>(null);
-
-  const scrollToServices = () => {
-    servicesRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <main>
-        <HeroSection onScrollToServices={scrollToServices} />
-        <ServicesSection sectionRef={servicesRef} />
-        <FAQSection />
-      </main>
-      <Footer />
-    </div>
-  );
+  return <HomeClient serviceSpots={serviceSpots} />;
 };
 
 export default Home;
