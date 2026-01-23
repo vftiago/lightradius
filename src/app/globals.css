@@ -28,6 +28,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --shadow-glow-available: 0 0 4px 1px rgba(34, 197, 94, 0.5);
+  --shadow-glow-unavailable: 0 0 4px 1px rgba(239, 68, 68, 0.5);
 }
 
 :root {

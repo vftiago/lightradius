@@ -1,10 +1,14 @@
+import { headers } from "next/headers";
 import { HomeClient } from "@/components/home-client";
-import { getServiceSpots } from "@/lib/edge-config";
+import { getServiceInfo } from "@/lib/edge-config";
+import { type Region } from "@/middleware";
 
 const Home = async () => {
-  const serviceSpots = await getServiceSpots();
+  const headersList = await headers();
+  const region = (headersList.get("x-region") || "US") as Region;
+  const serviceInfo = await getServiceInfo();
 
-  return <HomeClient serviceSpots={serviceSpots} />;
+  return <HomeClient region={region} serviceInfo={serviceInfo} />;
 };
 
 export default Home;

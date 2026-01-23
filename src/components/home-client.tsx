@@ -6,13 +6,15 @@ import { Navbar } from "@/components/navbar";
 import { FAQSection } from "@/components/sections/faq";
 import { HeroSection } from "@/components/sections/hero";
 import { ServicesSection } from "@/components/sections/services";
-import { type ServiceSpots } from "@/lib/edge-config";
+import { type ServiceInfo } from "@/lib/edge-config";
+import { type Region } from "@/middleware";
 
-interface HomeClientProps {
-  serviceSpots: ServiceSpots;
+type HomeClientProps = {
+  region: Region;
+  serviceInfo: ServiceInfo;
 }
 
-export const HomeClient = ({ serviceSpots }: HomeClientProps) => {
+export const HomeClient = ({ region, serviceInfo }: HomeClientProps) => {
   const servicesRef = useRef<HTMLElement>(null);
 
   const scrollToServices = () => {
@@ -24,7 +26,7 @@ export const HomeClient = ({ serviceSpots }: HomeClientProps) => {
       <Navbar />
       <main>
         <HeroSection onScrollToServices={scrollToServices} />
-        <ServicesSection sectionRef={servicesRef} spots={serviceSpots} />
+        <ServicesSection region={region} sectionRef={servicesRef} serviceInfo={serviceInfo} />
         <FAQSection />
       </main>
       <Footer />

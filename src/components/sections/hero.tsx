@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-interface HeroSectionProps {
+type HeroSectionProps = {
   onScrollToServices: () => void;
 }
 

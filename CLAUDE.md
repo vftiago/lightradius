@@ -59,7 +59,7 @@ Always use the `cn()` utility from `@/lib/utils` for merging Tailwind classes:
 
 ```tsx
 import { cn } from "@/lib/utils";
-cn("base-class", conditional && "conditional-class", className)
+cn("base-class", conditional && "conditional-class", className);
 ```
 
 ## Styling
@@ -92,6 +92,7 @@ The project uses strict ESLint rules:
 - No empty lines between import groups within the same category
 
 Example of correct import order:
+
 ```tsx
 import { forwardRef } from "react";
 import { Button } from "@/components/ui/button";
@@ -111,9 +112,9 @@ import { cn } from "@/lib/utils";
 For internal components, pass refs as named props rather than using `forwardRef`:
 
 ```tsx
-interface Props {
+type Props = {
   sectionRef: RefObject<HTMLElement | null>;
-}
+};
 
 export const Component = ({ sectionRef }: Props) => {
   return <section ref={sectionRef} />;

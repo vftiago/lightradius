@@ -13,8 +13,6 @@ export default tseslint.config(
   // Next.js base config (includes react, react-hooks, jsx-a11y, import, etc.)
   ...nextCoreWebVitals,
   globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "postcss.config.mjs"]),
-
-  // Type-checked TypeScript rules
   ...tseslint.configs.recommendedTypeChecked,
   {
     languageOptions: {
@@ -24,16 +22,13 @@ export default tseslint.config(
       },
     },
   },
-
-  // React Refresh for Next.js
   reactRefresh.configs.next,
-
-  // Custom rules and plugins
   {
     plugins: {
       perfectionist,
     },
     rules: {
+      "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
       "@typescript-eslint/consistent-type-imports": [
         "error",
         {
@@ -43,6 +38,7 @@ export default tseslint.config(
       ],
       "@typescript-eslint/no-unused-expressions": "warn",
       "@typescript-eslint/no-unused-vars": "warn",
+      "func-style": ["warn", "expression"],
       "perfectionist/sort-classes": [
         "warn",
         {
