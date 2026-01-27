@@ -32,7 +32,7 @@ export const Footer = () => {
         </div>
       </div>
       <div className="mx-auto mt-8 max-w-4xl text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} lightradius. All rights reserved.
+        © 2013 - {new Date().getFullYear()} lightradius. All rights reserved.
       </div>
     </footer>
   );
